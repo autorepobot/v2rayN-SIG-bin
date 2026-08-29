@@ -38,8 +38,10 @@ jobs:
             v2rayN-linux-arm64
             v2rayN-linux-riscv64
             v2rayN-linux-loong64
+            v2rayN-linux-ppc64le
             v2rayN-macos-64
             v2rayN-macos-arm64
+            v2rayN-windows-32
             v2rayN-windows-64
             v2rayN-windows-arm64
           )
@@ -156,8 +158,10 @@ jobs:
             v2rayN-linux-arm64
             v2rayN-linux-riscv64
             v2rayN-linux-loong64
+            v2rayN-linux-ppc64le
             v2rayN-macos-64
             v2rayN-macos-arm64
+            v2rayN-windows-32
             v2rayN-windows-64
             v2rayN-windows-arm64
           )
@@ -192,16 +196,20 @@ jobs:
             v2rayN-linux-arm64/bin \
             v2rayN-linux-riscv64/bin \
             v2rayN-linux-loong64/bin \
+            v2rayN-linux-ppc64le/bin \
             v2rayN-macos-64/bin \
             v2rayN-macos-arm64/bin \
+            v2rayN-windows-32/bin \
             v2rayN-windows-64/bin \
             v2rayN-windows-arm64/bin \
             v2rayN-linux-64.zip \
             v2rayN-linux-arm64.zip \
             v2rayN-linux-riscv64.zip \
             v2rayN-linux-loong64.zip \
+            v2rayN-linux-ppc64le.zip \
             v2rayN-macos-64.zip \
             v2rayN-macos-arm64.zip \
+            v2rayN-windows-32.zip \
             v2rayN-windows-64.zip \
             v2rayN-windows-arm64.zip
 
