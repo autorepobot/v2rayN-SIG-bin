@@ -43,12 +43,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TARGETS: >-
+        v2rayN-windows-32
         v2rayN-windows-64
         v2rayN-windows-arm64
         v2rayN-linux-64
         v2rayN-linux-arm64
         v2rayN-linux-riscv64
         v2rayN-linux-loong64
+        v2rayN-linux-ppc64le
         v2rayN-macos-64
         v2rayN-macos-arm64
     steps:
@@ -147,8 +149,8 @@ jobs:
 
           target_platform() {
             case "$1" in
-              v2rayN-windows-64|v2rayN-windows-arm64) echo windows ;;
-              v2rayN-linux-64|v2rayN-linux-arm64|v2rayN-linux-riscv64|v2rayN-linux-loong64) echo linux ;;
+              v2rayN-windows-32|v2rayN-windows-64|v2rayN-windows-arm64) echo windows ;;
+              v2rayN-linux-64|v2rayN-linux-arm64|v2rayN-linux-riscv64|v2rayN-linux-loong64|v2rayN-linux-ppc64le) echo linux ;;
               v2rayN-macos-64|v2rayN-macos-arm64) echo macos ;;
               *) return 1 ;;
             esac
@@ -156,10 +158,12 @@ jobs:
 
           target_arch() {
             case "$1" in
+              v2rayN-windows-32) echo 386 ;;
               v2rayN-windows-64|v2rayN-linux-64|v2rayN-macos-64) echo amd64 ;;
               v2rayN-windows-arm64|v2rayN-linux-arm64|v2rayN-macos-arm64) echo arm64 ;;
               v2rayN-linux-riscv64) echo riscv64 ;;
               v2rayN-linux-loong64) echo loong64 ;;
+              v2rayN-linux-ppc64le) echo ppc64le ;;
               *) return 1 ;;
             esac
           }
@@ -229,10 +233,12 @@ jobs:
             local v
             v="$(with_v "$version")"
             case "$target" in
+              v2rayN-windows-32) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-windows-32.zip" ;;
               v2rayN-linux-64) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-linux-64.zip" ;;
               v2rayN-linux-arm64) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-linux-arm64-v8a.zip" ;;
               v2rayN-linux-riscv64) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-linux-riscv64.zip" ;;
               v2rayN-linux-loong64) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-linux-loong64.zip" ;;
+              v2rayN-linux-ppc64le) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-linux-ppc64le.zip" ;;
               v2rayN-macos-64) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-macos-64.zip" ;;
               v2rayN-macos-arm64) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-macos-arm64-v8a.zip" ;;
               v2rayN-windows-64) echo "https://github.com/XTLS/Xray-core/releases/download/${v}/Xray-windows-64.zip" ;;
@@ -248,10 +254,12 @@ jobs:
             v="$(with_v "$version")"
             nv="$(no_v "$version")"
             case "$target" in
+              v2rayN-windows-32) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-windows-386.zip" ;;
               v2rayN-linux-64) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-linux-amd64.tar.gz" ;;
               v2rayN-linux-arm64) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-linux-arm64.tar.gz" ;;
               v2rayN-linux-riscv64) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-linux-riscv64.tar.gz" ;;
               v2rayN-linux-loong64) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-linux-loong64.tar.gz" ;;
+              v2rayN-linux-ppc64le) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-linux-ppc64le.tar.gz" ;;
               v2rayN-windows-64) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-windows-amd64.zip" ;;
               v2rayN-windows-arm64) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-windows-arm64.zip" ;;
               v2rayN-macos-64) echo "https://github.com/SagerNet/sing-box/releases/download/${v}/sing-box-${nv}-darwin-amd64.tar.gz" ;;
@@ -266,10 +274,12 @@ jobs:
             local v
             v="$(with_v "$version")"
             case "$target" in
+              v2rayN-windows-32) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-windows-386-${v}.zip" ;;
               v2rayN-linux-64) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-linux-amd64-${v}.gz" ;;
               v2rayN-linux-arm64) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-linux-arm64-${v}.gz" ;;
               v2rayN-linux-riscv64) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-linux-riscv64-${v}.gz" ;;
               v2rayN-linux-loong64) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-linux-loong64-abi2-${v}.gz" ;;
+              v2rayN-linux-ppc64le) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-linux-ppc64le-${v}.gz" ;;
               v2rayN-macos-64) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-darwin-amd64-${v}.gz" ;;
               v2rayN-macos-arm64) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-darwin-arm64-${v}.gz" ;;
               v2rayN-windows-64) echo "https://github.com/MetaCubeX/mihomo/releases/download/${v}/mihomo-windows-amd64-${v}.zip" ;;
@@ -424,20 +434,24 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add \
+            v2rayN-windows-32 \
             v2rayN-windows-64 \
             v2rayN-windows-arm64 \
             v2rayN-linux-64 \
             v2rayN-linux-arm64 \
             v2rayN-linux-riscv64 \
             v2rayN-linux-loong64 \
+            v2rayN-linux-ppc64le \
             v2rayN-macos-64 \
             v2rayN-macos-arm64 \
+            v2rayN-windows-32.zip \
             v2rayN-windows-64.zip \
             v2rayN-windows-arm64.zip \
             v2rayN-linux-64.zip \
             v2rayN-linux-arm64.zip \
             v2rayN-linux-riscv64.zip \
             v2rayN-linux-loong64.zip \
+            v2rayN-linux-ppc64le.zip \
             v2rayN-macos-64.zip \
             v2rayN-macos-arm64.zip
 
