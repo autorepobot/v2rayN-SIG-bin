@@ -22,12 +22,14 @@ jobs:
     env:
       XRAY_REPO: autorepobot/Xray
       TARGETS: >-
+        v2rayN-windows-32
         v2rayN-windows-64
         v2rayN-windows-arm64
         v2rayN-linux-64
         v2rayN-linux-arm64
         v2rayN-linux-riscv64
         v2rayN-linux-loong64
+        v2rayN-linux-ppc64le
         v2rayN-macos-64
         v2rayN-macos-arm64
 
@@ -145,6 +147,9 @@ jobs:
             v="$(with_v "$version")"
 
             case "$target" in
+              v2rayN-windows-32)
+                echo "https://github.com/${XRAY_REPO}/releases/download/${v}/Xray-windows-32.zip"
+                ;;
               v2rayN-windows-64)
                 echo "https://github.com/${XRAY_REPO}/releases/download/${v}/Xray-windows-64.zip"
                 ;;
@@ -162,6 +167,9 @@ jobs:
                 ;;
               v2rayN-linux-loong64)
                 echo "https://github.com/${XRAY_REPO}/releases/download/${v}/Xray-linux-loong64.zip"
+                ;;
+              v2rayN-linux-ppc64le)
+                echo "https://github.com/${XRAY_REPO}/releases/download/${v}/Xray-linux-ppc64le.zip"
                 ;;
               v2rayN-macos-64)
                 echo "https://github.com/${XRAY_REPO}/releases/download/${v}/Xray-macos-64.zip"
@@ -254,20 +262,24 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add \
+            v2rayN-windows-32/bin/xray \
             v2rayN-windows-64/bin/xray \
             v2rayN-windows-arm64/bin/xray \
             v2rayN-linux-64/bin/xray \
             v2rayN-linux-arm64/bin/xray \
             v2rayN-linux-riscv64/bin/xray \
             v2rayN-linux-loong64/bin/xray \
+            v2rayN-linux-ppc64le/bin/xray \
             v2rayN-macos-64/bin/xray \
             v2rayN-macos-arm64/bin/xray \
+            v2rayN-windows-32.zip \
             v2rayN-windows-64.zip \
             v2rayN-windows-arm64.zip \
             v2rayN-linux-64.zip \
             v2rayN-linux-arm64.zip \
             v2rayN-linux-riscv64.zip \
             v2rayN-linux-loong64.zip \
+            v2rayN-linux-ppc64le.zip \
             v2rayN-macos-64.zip \
             v2rayN-macos-arm64.zip
 
